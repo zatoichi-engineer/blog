@@ -2,3 +2,5 @@ title: Zatoichi's Engineering Blog
 description: Musings from a firmware engineer
 google_analytics:
 theme:
+
+theme: jekyll-theme-hacker
