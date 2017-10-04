@@ -294,6 +294,7 @@ of the experiment (raw data [here]({{ "/assets/data/hardening-ffmpeg-data.csv" |
     base=[data here]
     ssp=[data here]
     axis ([0,3]);
+    pkg load statistics
     boxplot ({base, ssp});
     set(gca (), "xtick", [1 2], "xticklabel", {"No flags", "SSP"})
     title ("FFmpeg encoding times");
