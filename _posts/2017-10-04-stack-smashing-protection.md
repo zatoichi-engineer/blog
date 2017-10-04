@@ -242,7 +242,7 @@ Following are the sizes of the file systems of the two builds:
 | SSP           | 576,132       |
 
 This shows that SSP code instrumentation adds an additional 510 KB (~0.5MB)
-of storage, which is an increase of ~1%. Your mileage may vary, as the increase
+of storage, which is an increase of ~0.09%. Your mileage may vary, as the increase
 depends on the type of code being compiled.
 
 #### Performance cost
@@ -319,8 +319,8 @@ outliers are removed, the results show much closer encoding times:
 
 Stack Smashing Protection does provide some protection against latent buffer
 overflow defects which could be exploitable. Enabling it on a system may
-increase the storage size of the executables ~1% or more. There may be
-a performance hit, however, it is modest at best. If the extra code storage
-cost is feasible, it may be worth enabling SSP if there is risk that the
-system could process data from the outside world which could be used to
-trigger an exploit.
+modestly increase the storage size of the executables (less than 0.1% in this
+case). There may be a performance hit, however, it is modest at best. If the
+extra code storage cost is feasible, it may be worth enabling SSP if there is
+risk that the system could process data from the outside world which could be
+used to trigger an exploit.
