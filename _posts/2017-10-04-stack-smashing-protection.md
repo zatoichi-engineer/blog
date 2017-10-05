@@ -270,7 +270,7 @@ The video file is the 640x360 1MB flv file from samples-videos.com:
 [big_buck_bunny_360p_1mb.flv](http://www.sample-videos.com/video/flv/360/big_buck_bunny_360p_1mb.flv). The FFmpeg command line to perform the conversion is:
 
 {% highlight shell_session %}
-ffmpeg -y -i big_buck_bunny_360p_1mb.flv -c:v libx264 -c:a aac out.mp4
+$ ffmpeg -y -i big_buck_bunny_360p_1mb.flv -c:v libx264 -c:a aac out.mp4
 {% endhighlight %}
 
 {% comment %}
