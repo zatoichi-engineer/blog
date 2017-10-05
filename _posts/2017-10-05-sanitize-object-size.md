@@ -209,54 +209,12 @@ However, the question is can the performance cost be measured or is it
 exceedingly small?
 
 To quantify the performance impact, an experiment was conducted which encoded
-a small video using FFmpeg. This experiment was selected because video encoding
-is a non-trivial process and should have a variety of types of code involved
-for encoding, which should provide a use case representative to code used
-in real systems. In addition, using FFmpeg itself is a good example to show
-the relevance of security, as there have been security vulnerabilities identified
-in the past which could be exploited to execute arbitrary code.
-([Examples](http://seclists.org/oss-sec/2017/q1/245):
-[CVE-2016-10190](https://nvd.nist.gov/vuln/detail/CVE-2016-10190),
-[CVE-2016-10191](https://nvd.nist.gov/vuln/detail/CVE-2016-10191),
-[CVE-2016-10192](https://nvd.nist.gov/vuln/detail/CVE-2016-10192))
+a small video using FFmpeg 20 times in succession, once with and once without
+the sanitizing flags. See [this post]({% post_url 2017-10-04-stack-smashing-protection %}#performance-cost) for details on the experiment and the video file which
+was used.
 
-The FFmpeg experiment consists of re-encoding a x264 video file in a flv
-container to a mp4 container as well as re-encoding its aac audio track.
-The video file is the 640x360 1MB flv file from samples-videos.com:
-[big_buck_bunny_360p_1mb.flv](http://www.sample-videos.com/video/flv/360/big_buck_bunny_360p_1mb.flv). The FFmpeg command line to perform the conversion is:
-
-{% highlight shell_session %}
-$ ffmpeg -y -i big_buck_bunny_360p_1mb.flv -c:v libx264 -c:a aac out.mp4
-{% endhighlight %}
-
-{% comment %}
-Data stripped from the 'time' command and reformatted for import into
-octave using:
-
-while read line; do minutes=$(echo $line | cut -d ' ' -f 2 | cut -d 'm' -f 1); seconds=$(echo $line | cut -d ' ' -f 3 | cut -d 's' -f 1); total=$(echo $minutes*60 + $seconds | bc); echo $total; done < data
-{% endcomment %}
-
-The experiment took place in QEMU running on a 2015 Macbook Pro, where
-QEMU was given 1 CPU and 1GB of RAM. The video file was re-encoded
-20 times for each build and the processing times were recorded. The laptop was
-otherwise idle during the trials to reduce noise in the data.  The following
-two [box plots](http://www.physics.csbsju.edu/stats/box2.html) show the results
-of the experiment (raw data [here]({{ "/assets/data/hardening-ffmpeg-data.csv" | absolute_url }})).
-
-{% comment %}
-    Box plot generated using octave:
-    https://octave.sourceforge.io/statistics/function/boxplot.html
-
-    base=[data here]
-    ssp=[data here]
-    axis ([0,3]);
-    pkg load statistics
-    boxplot ({base, ssp});
-    set(gca (), "xtick", [1 2], "xticklabel", {"No flags", "Sanitize object size"})
-    title ("FFmpeg encoding times");
-    ylabel("Seconds")
-    print("sanitize-object-size-ffmpeg-boxplot.png")
-{% endcomment %}
+The following two [box plots](http://www.physics.csbsju.edu/stats/box2.html)
+show the results of the experiment (raw data [here]({{ "/assets/data/hardening-ffmpeg-data.csv" | absolute_url }})).
 
 ![Boxplot]({{ "/assets/images/sanitize-object-size-ffmpeg-boxplot.png" | absolute_url }})
 
