@@ -151,8 +151,9 @@ metrics relevant to an embedded system will be used for the analysis:
 
 To facilitate the analysis, a custom Linux distribution was built using Yocto,
 one build with the object-size sanitizer enabled and one without. The build was
-run on QEMU and analyzed. See [this post]({% post_url 2017-10-02-yocto-on-osx %}) on
-how to create a custom QEMU image, in my case on macOS.
+run on QEMU and analyzed. See
+[this post]({% post_url 2017-10-02-yocto-on-osx %}#building-with-yocto-on-docker)
+on how to create a custom QEMU image, in my case on macOS.
 
 The Yocto build was a bare-bones build with one exception: FFmpeg was included
 which will be used to compare performance. Adding FFmpeg was accomplished by
