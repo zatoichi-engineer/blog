@@ -238,11 +238,11 @@ Following are the sizes of the file systems of the two builds:
 
 | Build         | Size (KB)       
 | ------------- |:-------------:|
-| No Flags      | 575,622       |
-| SSP           | 576,132       |
+| No Flags      | 556,866       |
+| SSP           | 557,131       |
 
-This shows that SSP code instrumentation adds an additional 510 KB (~0.5MB)
-of storage, which is an increase of ~0.09%. Your mileage may vary, as the increase
+This shows that SSP code instrumentation adds an additional 265 KB (~0.25MB)
+of storage, which is an increase of ~0.05%. Your mileage may vary, as the increase
 depends on the type of code being compiled.
 
 #### Performance cost
