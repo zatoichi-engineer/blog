@@ -194,11 +194,11 @@ Following are the sizes of the file systems of the two builds:
 
 | Build         | Size (KB)       
 | ------------- |:-------------:|
-| No Flags      | 575,622       |
-| Sanitizer     | 576,319       |
+| No Flags      | 556,866       |
+| Sanitizer     | 557,376       |
 
-This shows that SSP code instrumentation adds an additional 697 KB (~0.7MB)
-of storage, which is an increase of ~0.12%. Your mileage may vary, as the increase
+This shows that SSP code instrumentation adds an additional 510 KB (~0.5MB)
+of storage, which is an increase of ~0.09%. Your mileage may vary, as the increase
 depends on the type of code being compiled.
 
 #### Performance cost
@@ -220,14 +220,14 @@ show the results of the experiment (raw data [here]({{ "/assets/data/hardening-f
 
 The results show that there is a clear increase in the amount of time needed
 to encode the video with the sanitizer enabled. On average the sanitizer resulted
-in an increase of 11.5 seconds, or ~9.5%.
+in an increase of 12 seconds, or ~10%.
 
 ### Conclusion
 
 The object-size sanitizer does provide some protection against out-of-bounds
 accesses if GCC can determine the size of objects at compile time. Using it
 does increase the size of executables modestly, but comes with a significant
-performance penalty (~9.5% in this case). The sanitizer would be valuable
+performance penalty (~10% in this case). The sanitizer would be valuable
 during development and QA, but may not be recommended for systems where
 performance targets may be missed. There are some projects where this
 sanitizer is enabled as the security trade-off is worth the performance hit
