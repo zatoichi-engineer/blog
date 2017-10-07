@@ -236,15 +236,15 @@ SECURITY_X_LDFLAGS = ""
 #### Code size
 
 The Yocto builds were configured to produce a EXT4 file system image.
-Following are the sizes of the file systems of the two builds:
+Following are the number of KB used on the file systems:
 
 | Build          | Size (KB)       
 | -------------- |:-------------:|
-| No Flags       | 556,866       |
-| FORTIFY_SOURCE | 556,897       |
+| No Flags       | 34,844       |
+| FORTIFY_SOURCE | 34,868       |
 
 This shows that compiling with __FORTIFY_SOURCE=2 results in adding an
-additional 31 KB, which is very modest. This may depend on the type of
+additional 24 KB, which is very modest. This may depend on the type of
 code being compiled, so your mileage may vary.
 
 #### Performance cost

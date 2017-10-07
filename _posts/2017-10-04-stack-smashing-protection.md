@@ -234,15 +234,16 @@ SECURITY_X_LDFLAGS = "-fstack-protector-strong"
 #### Code size
 
 The Yocto builds were configured to produce a EXT4 file system image.
-Following are the sizes of the file systems of the two builds:
+Following are the number of KB used on the file systems:
 
 | Build         | Size (KB)       
 | ------------- |:-------------:|
-| No Flags      | 556,866       |
-| SSP           | 557,131       |
+| No Flags      | 34,844       |
+| SSP           | 35,056       |
 
-This shows that SSP code instrumentation adds an additional 265 KB (~0.25MB)
-of storage, which is an increase of ~0.05%. Your mileage may vary, as the increase
+
+This shows that SSP code instrumentation adds an additional 212 KB (~0.25MB)
+of storage, which is an increase of ~0.6%. Your mileage may vary, as the increase
 depends on the type of code being compiled.
 
 #### Performance cost
@@ -320,7 +321,7 @@ outliers are removed, the results show much closer encoding times:
 
 Stack Smashing Protection does provide some protection against latent buffer
 overflow defects which could be exploitable. Enabling it on a system may
-modestly increase the storage size of the executables (less than 0.1% in this
+slightly increase the storage size of the executables (0.6% in this
 case). There may be a performance hit, however, it is modest at best. If the
 extra code storage cost is feasible, it may be worth enabling SSP if there is
 risk that the system could process data from the outside world which could be

@@ -190,15 +190,15 @@ SECURITY_X_LDFLAGS = ""
 #### Code size
 
 The Yocto builds were configured to produce a EXT4 file system image.
-Following are the sizes of the file systems of the two builds:
+Following are the number of KB used on the file systems:
 
 | Build         | Size (KB)       
 | ------------- |:-------------:|
-| No Flags      | 556,866       |
-| Sanitizer     | 557,376       |
+| No Flags      | 34,844        |
+| Sanitizer     | 35,244        |
 
-This shows that SSP code instrumentation adds an additional 510 KB (~0.5MB)
-of storage, which is an increase of ~0.09%. Your mileage may vary, as the increase
+This shows that SSP code instrumentation adds an additional 400 KB
+of storage, which is an increase of ~1.1%. Your mileage may vary, as the increase
 depends on the type of code being compiled.
 
 #### Performance cost
@@ -226,7 +226,7 @@ in an increase of 12 seconds, or ~10%.
 
 The object-size sanitizer does provide some protection against out-of-bounds
 accesses if GCC can determine the size of objects at compile time. Using it
-does increase the size of executables modestly, but comes with a significant
+does increase the size of executables (1.1% in this case), but comes with a significant
 performance penalty (~10% in this case). The sanitizer would be valuable
 during development and QA, but may not be recommended for systems where
 performance targets may be missed. There are some projects where this
