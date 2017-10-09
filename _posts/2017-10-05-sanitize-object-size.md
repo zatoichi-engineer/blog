@@ -209,7 +209,7 @@ However, the question is can the performance cost be measured or is it
 exceedingly small?
 
 To quantify the performance impact, an experiment was conducted which encoded
-a small video using FFmpeg 20 times in succession, once with and once without
+a small video 20 times in succession using FFmpeg, once with and once without
 the sanitizing flags. See [this post]({% post_url 2017-10-04-stack-smashing-protection %}#performance-cost) for details on the experiment and the video file which
 was used.
 
