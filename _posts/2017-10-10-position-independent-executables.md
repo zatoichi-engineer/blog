@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Position Independent Executables and Its Performance Impact"
+title: "Position Independent Executables and Their Performance Impact"
 date: 2017-10-10
 ---
 ### What is ASLR and when should it be used
