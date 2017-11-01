@@ -186,7 +186,7 @@ mac$ brew install qemu
 The following then launches QEMU with the image:
 
 {% highlight shell_session %}
-$ qemu-system-i386 -kernel bzImage -hda core-image-minimal-qemux86.ext4 -append "console=ttyS0 root=/dev/hda" -nographic
+mac$ qemu-system-i386 -kernel bzImage -hda core-image-minimal-qemux86.ext4 -append "console=ttyS0 root=/dev/hda" -nographic
 {% endhighlight %}
 
 and a terminal is provided for the newly created GNU/Linux system:
