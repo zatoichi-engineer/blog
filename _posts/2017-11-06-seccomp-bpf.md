@@ -265,7 +265,7 @@ The results from the first experiment are shown in the following two
 ![Boxplot]({{ "/assets/images/seccomp-ffmpeg-boxplot.png" | absolute_url }})
 
 The results do not show an increase in the time necessary to encode the
-example file. The reduction in mean amount of time may be a result of
+example file. The reduction in the mean may be a result of
 a reduced number of samples in the experiment.
 
 Unsatisfied with this result, a second experiment was run. In this experiment,
@@ -300,7 +300,7 @@ basis may be cumbersome, as the source would need to be updated for each.
 If the system uses systemd and the processes in question are services it
 is easier to define the system call limits using configuration files.
 
-The overhead for an simple system call may be relatively high, however the
+The overhead for an simple system call may seem high, however the
 overhead is easily hidden when the system calls take longer to execute.
-As long as one can determine what system calls are valid for an application
+If one can determine what system calls are valid for an application,
 using seccomp-bpf is a good approach for limiting one's risk and exposure.
