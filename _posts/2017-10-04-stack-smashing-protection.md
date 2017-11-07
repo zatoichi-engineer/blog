@@ -268,7 +268,9 @@ in the past which could be exploited to execute arbitrary code.
 The FFmpeg experiment consists of re-encoding a x264 video file in a flv
 container to a mp4 container as well as re-encoding its aac audio track.
 The video file is the 640x360 1MB flv file from samples-videos.com:
-[big_buck_bunny_360p_1mb.flv](http://www.sample-videos.com/video/flv/360/big_buck_bunny_360p_1mb.flv). The FFmpeg command line to perform the conversion is:
+[big_buck_bunny_360p_1mb.flv](http://www.sample-videos.com/video/flv/360/big_buck_bunny_360p_1mb.flv)
+[[alternate link]({{ "/assets/data/big_buck_bunny_360p_1mb.flv" | absolute_url }})].
+The FFmpeg command line to perform the conversion is:
 
 {% highlight shell_session %}
 $ ffmpeg -y -i big_buck_bunny_360p_1mb.flv -c:v libx264 -c:a aac out.mp4
