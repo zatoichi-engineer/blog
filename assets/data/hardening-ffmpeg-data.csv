@@ -1,4 +1,4 @@
-No flags,SSP,Sanitize object size,FORTIFY_SOURCE,Position independent executable,Kernel SSP,Stack check,SSP + Stack check,Kernel structure validation,SLAB freelist random,SLUB poisoning,seccomp
+No flags (morty),SSP (morty),Sanitize object size (morty),FORTIFY_SOURCE (morty),Position independent executable (morty),Kernel SSP (morty),Stack check (morty),SSP + Stack check (morty),Kernel structure validation (morty),SLAB freelist random (morty),SLUB poisoning (morty),seccomp (morty)
 121,128.04,137.52,118.19,123.19,123.05,121.08,122.35,121.28,120.23,119.91,119.85
 120.03,125.75,138.2,118.49,122.98,121.18,120.55,120.76,120.89,119.31,119.85,118.9
 121.81,121.15,137.45,118.48,120.18,120.02,119.75,120.99,120.66,119.44,122.05,120.48
