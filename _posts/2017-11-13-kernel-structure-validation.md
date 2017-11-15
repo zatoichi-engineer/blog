@@ -220,7 +220,13 @@ the stack is overrun.
 To determine the performance implications of the aforementioned configurations,
 a custom Linux distribution was built using Yocto,
 one build with the configurations enabled in the kernel and one without.
-Linux v4.8 was used in the comparison. The build was run on QEMU and analyzed. See
+Linux v4.8 was used in the comparison. Two metrics relevant to an embedded
+system will be used for the analysis:
+
+1. Increased code size
+2. Performance cost
+
+The build was run on QEMU and analyzed. See
 [this post]({% post_url 2017-10-02-yocto-on-osx %}#building-with-yocto-on-docker)
 on how to create a custom QEMU image, in my case on macOS.
 
