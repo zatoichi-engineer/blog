@@ -37,7 +37,7 @@ written the function aborts at runtime, thus pointing out a buffer overflow befo
 it occurs.
 
 One is not expected to call these wrapper functions directly. Instead, if
-code is compiled with the `__FORTIFY_SOURCE` macro defined GCC will transparently
+code is compiled with the `_FORTIFY_SOURCE` macro defined GCC will transparently
 replace the function calls with their wrappers if the compiler cannot prove
 that a buffer overflow is impossible. The size of the destination
 buffer is determined using the built-in function `__builtin_object_size()`.
@@ -58,10 +58,10 @@ struct blob
 {% endhighlight %}
 
 The blob.first substructure has only 10 bytes. If writing
-past this and into blob.second should be disallowed, use `__FORTIFY_SOURCE=2`.
+past this and into blob.second should be disallowed, use `_FORTIFY_SOURCE=2`.
 Alternatively, if data overruns from blob.first into blob.second, but does not
 overrun blob, the program may still work correctly (and this may be part of
-the program's expected operation). If this is acceptable, use `__FORTIFY_SOURCE=1`.
+the program's expected operation). If this is acceptable, use `_FORTIFY_SOURCE=1`.
 To summarize:
 
 {% highlight c %}
@@ -90,7 +90,7 @@ int main()
 {% endhighlight %}
 
 {% highlight shell_session %}
-$ gcc -D__FORTIFY_SOURCE=2 -O2 test.c
+$ gcc -D_FORTIFY_SOURCE=2 -O2 test.c
 In file included from /usr/include/string.h:635:0,
                  from test.c:1:
 In function ‘memset’,
@@ -138,7 +138,7 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 Aborted
 {% endhighlight %}
 
-Using __FORTIFY_SOURCE is not a panacea, as not all calls to these functions can be checked
+Using `_FORTIFY_SOURCE` is not a panacea, as not all calls to these functions can be checked
 for overflows. Below shows examples of the four possible cases
  [[source](https://gcc.gnu.org/ml/gcc-patches/2004-09/msg02055.html)]:
 
@@ -184,13 +184,13 @@ memcpy (p, q, n);
 strcpy (p, q);
 {% endhighlight %}
 
-Using __FORTIFY_SOURCE also adds compile time warnings and checks
+Using `_FORTIFY_SOURCE` also adds compile time warnings and checks
 for some best-practices. Read [here](https://wiki.ubuntu.com/ToolChain/CompilerFlags#A-D_FORTIFY_SOURCE.3D2) for further details.
 
 ### Analyzing FORTIFY_SOURCE
 
-The usage of `__FORTIFY_SOURCE` is analyzed below. The most strict option,
-`__FORTIFY_SOURCE=2`, is used. Two metrics relevant to an embedded system will be
+The usage of `_FORTIFY_SOURCE` is analyzed below. The most strict option,
+`_FORTIFY_SOURCE=2`, is used. Two metrics relevant to an embedded system will be
 used for the analysis:
 
 1. Increased code size
@@ -243,7 +243,7 @@ Following are the number of KB used on the file systems:
 | No Flags       | 34,844       |
 | FORTIFY_SOURCE | 34,868       |
 
-This shows that compiling with __FORTIFY_SOURCE=2 results in adding an
+This shows that compiling with `_FORTIFY_SOURCE=2` results in adding an
 additional 24 KB, which is very modest. This may depend on the type of
 code being compiled, so your mileage may vary.
 
@@ -264,14 +264,14 @@ show the results of the experiment (raw data [here]({{ "/assets/data/hardening-f
 
 ![Boxplot]({{ "/assets/images/fortify-source-ffmpeg-boxplot.png" | absolute_url }})
 
-The results show that there is no loss of performance when using __FORTIFY_SOURCE.
+The results show that there is no loss of performance when using `_FORTIFY_SOURCE`.
 Curious, the performance appears to have improved, which is not expected. It is
 not known if this is an artifact of the testing setup or if there were additional
 optimizations which became available when the option was used.
 
 ### Conclusion
 
-The __FORTIFY_SOURCE option does provide protection against some types of
+The `_FORTIFY_SOURCE` option does provide protection against some types of
 buffer overflows when using select glibc functions. The code size cost
 when enabling this is very low, and there is no indication of performance
 loss when encoding a sample video with FFmpeg. The option additionally will emit
